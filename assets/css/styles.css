@@ -1,0 +1,192 @@
+/* General Body Styles */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Gradient Text & Buttons */
+.text-gradient {
+    background: linear-gradient(90deg, #00C1FF, #00A3FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
+.btn-gradient {
+    background: linear-gradient(90deg, #00C1FF, #00A3FF);
+    border: none;
+    color: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.btn-gradient:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 193, 255, 0.2);
+    color: #fff;
+}
+
+/* Custom Button Style */
+.btn-custom {
+    background-color: #343a40;
+    color: #fff;
+    border: 1px solid #495057;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.btn-custom:hover {
+    background-color: #495057;
+    transform: translateY(-3px);
+    color: #fff;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #1e1e1e;
+    border-bottom: 1px solid #333;
+    padding: 1rem 0;
+}
+.navbar-brand h1 {
+    font-size: 1.5rem;
+    margin: 0;
+    color: #fff;
+}
+.navbar-brand img {
+    height: 40px;
+    margin-right: 10px;
+}
+.nav-link {
+    color: #ccc;
+}
+.nav-link:hover, .nav-link.active {
+    color: #fff;
+}
+.dropdown-menu {
+    background-color: #1e1e1e;
+    border-color: #333;
+}
+.dropdown-item {
+    color: #ccc;
+}
+.dropdown-item:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Hero Section */
+.hero {
+    padding: 6rem 0;
+    text-align: center;
+}
+.hero .title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+}
+.hero .paragraph {
+    font-size: 1.1rem;
+    color: #adb5bd;
+    max-width: 600px;
+    margin: 0 auto 2rem auto;
+}
+
+/* Features Section */
+.features {
+    padding: 5rem 0;
+    background-color: #181818;
+}
+.features-title .pre-title {
+    color: #00C1FF;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.features-title .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+.feature-box {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-box:hover, .feature-box.active {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 193, 255, 0.15);
+}
+.feature-box .title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+.feature-box .title i {
+    color: #00C1FF;
+    margin-right: 10px;
+}
+.feature-box .dsc {
+    color: #adb5bd;
+}
+
+/* Contact Section */
+.contact {
+    padding: 5rem 0;
+    text-align: center;
+    background-color: #1e1e1e;
+}
+.contact .title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+}
+
+/* Loader */
+.loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #121212;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+.loader.fade-out {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader-logo {
+    width: 100px;
+    height: auto;
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Animations */
+.shimmer {
+    animation: shimmer 2s linear infinite;
+    background: linear-gradient(to right, #fff 20%, #00C1FF 40%, #00A3FF 60%, #fff 80%);
+    background-size: 200% auto;
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+@keyframes shimmer {
+    to {
+        background-position: -200% center;
+    }
+}
+
+.scale {
+    transition: transform 0.2s ease-in-out;
+}
+.scale:hover {
+    transform: scale(1.05);
+}
