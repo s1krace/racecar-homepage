@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="1">
+<!-- force deploy -->
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-77VL7HJBW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-77VL7HJBW8');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Racecar.cc</title>
+    <meta name="description" content="Racecar.cc">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="racecar.css">
+
+    <meta property="og:title" content="Racecar.cc">
+    <meta property="og:description" content="The world of racecar.cc">
+    <meta property="og:image" content="https://racecar/racecar.png">
+    <meta property="og:url" content="https://racecar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="racecar.cc">
+    <meta name="twitter:site" content="@s1krace">
+    
+    <link rel="icon" type="image/png" href="racecar.png">
+    <link rel="apple-touch-icon" href="racecar.png">
+
+</head>
+
+<body id="body-container" class="">
+
+    <div class="outer-container flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="inner-container relative w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <div class="content-container space-y-4">
+                <div class="content-row text-2xl font-bold text-center text-gray-800 dark:text-gray-100">Racecar.cc</div>
+                <div class="content-row h-6"></div>
+                <div class="content-row text-lg font-semibold text-center uppercase tracking-widest text-gray-600 dark:text-gray-300">
+                    <span>RACECAR</span> <span>FREAKY</span>
+                </div>
+                <div class="content-row h-6"></div>
+                <!-- Editable Links -->
+                <div class="content-row">
+                    <button id="link-1" class="content-link w-full flex items-center justify-between px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        <span class="button-label">Telegram</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-2" class="content-link w-full flex items-center justify-between px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
+                        <span class="button-label">Discord</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-3" class="content-link w-full flex items-center justify-between px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 transition">
+                        <span class="button-label">Twitter</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-4" class="content-link w-full flex items-center justify-between px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 transition">
+                        <span class="button-label">YouTube</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row h-6"></div>
+
+                <div class="content-row h-6"></div>
+                <!-- Theme Toggle -->
+                <div class="content-row content-row-bottom flex justify-center">
+                    <button id="theme-toggle" class="content-switch px-4 py-2 bg-yellow-400 text-gray-900 rounded hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition">
+                        <span class="button-label no-mobile">Theme</span>
+                        <span class="mobile-only">[⬏]</span>
+                    </button>
+                </div>
+            </div>
+            <div id="ascii" class="ascii-container mt-8">
+                <pre data-selection-enabled="false"></pre>
+                <div id="ascii-hint" class="ascii-hint">[&nbsp;]</div>
+            </div>
+            <div id="ascii-click" class="ascii-click-container"></div>
+        </div>
+    </div>
+    
+    <script type="module" src="main.js"></script>
+
+    <script type="module">
+        import { run } from '/src/run.js'
+        import * as program from '/ascii.js'
+        run(program, { element: document.querySelector('pre') }).then(function (e) {
+            console.log(e)
+        }).catch(function (e) {
+            console.warn(e.message)
+            console.log(e.error)
+        })
+    </script>
+
+    <script src="links.js"></script>
+</body>
+
+</html>
