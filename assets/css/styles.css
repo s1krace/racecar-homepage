@@ -50,26 +50,12 @@ body {
     margin: 0;
     color: #fff;
 }
-.navbar-brand img {
-    height: 40px;
-    margin-right: 10px;
-}
 .nav-link {
     color: #ccc;
+    transition: color 0.2s ease-in-out;
 }
 .nav-link:hover, .nav-link.active {
-    color: #fff;
-}
-.dropdown-menu {
-    background-color: #1e1e1e;
-    border-color: #333;
-}
-.dropdown-item {
-    color: #ccc;
-}
-.dropdown-item:hover {
-    background-color: #333;
-    color: #fff;
+    color: #00C1FF;
 }
 
 /* Hero Section */
@@ -98,6 +84,7 @@ body {
     color: #00C1FF;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 1px;
 }
 .features-title .title {
     font-size: 2.5rem;
@@ -117,14 +104,25 @@ body {
     box-shadow: 0 8px 25px rgba(0, 193, 255, 0.15);
 }
 .feature-box .title {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     margin-bottom: 1rem;
+    font-weight: bold;
 }
 .feature-box .title i {
     color: #00C1FF;
     margin-right: 10px;
+    font-size: 1.5rem;
+    display: block;
+    margin-bottom: 0.5rem;
 }
 .feature-box .dsc {
+    color: #adb5bd;
+}
+.feature-link {
+    text-decoration: none;
+}
+
+.feature-box .dsc p {
     color: #adb5bd;
 }
 
@@ -132,7 +130,8 @@ body {
 .contact {
     padding: 5rem 0;
     text-align: center;
-    background-color: #1e1e1e;
+    background-color: #121212;
+    border-top: 1px solid #333;
 }
 .contact .title {
     font-size: 2.5rem;
@@ -171,7 +170,7 @@ body {
 
 /* Animations */
 .shimmer {
-    animation: shimmer 2s linear infinite;
+    animation: shimmer 3s linear infinite;
     background: linear-gradient(to right, #fff 20%, #00C1FF 40%, #00A3FF 60%, #fff 80%);
     background-size: 200% auto;
     color: transparent;
