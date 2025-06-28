@@ -1,121 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="1">
+<!-- force deploy -->
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-77VL7HJBW8"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-77VL7HJBW8');
+    </script>
+
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Racecar.cc - The Best Upgrading Service</title>
-    <meta name="description" content="Racecar offers the best upgrading service for Discord Nitro, Server Boosts, and more. Affordable, reliable, and 24/7 support.">
-    <meta name="keywords" content="Discord Nitro, Server Boosts, Account Upgrades, Cheap Pricing, Discord Boosts, Nitro Features, Discord Account Upgrades">
-    <meta name="author" content="Racecar">
-    <meta name="theme-color" content="#00C1FF">
-    <meta property="og:title" content="The Best Upgrading Service Available">
-    <meta property="og:description" content="Our products are guaranteed to leave you satisfied. Affordable, reliable, and 24/7 support.">
-    <meta property="og:image" content="racecar.png">
-    <meta property="og:site_name" content="Racecar.cc">
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    
+    <title>Racecar.cc</title>
+    <meta name="description" content="Racecar.cc">
+    
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.1/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="racecar.css">
+
+    <meta property="og:title" content="Racecar.cc">
+    <meta property="og:description" content="The world of racecar.cc">
+    <meta property="og:image" content="https://racecar/racecar.png">
+    <meta property="og:url" content="https://racecar">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta property="og:site_name" content="racecar.cc">
+    <meta name="twitter:site" content="@s1krace">
+    
+    <link rel="icon" type="image/png" href="racecar.png">
+    <link rel="apple-touch-icon" href="racecar.png">
+
 </head>
 
-<body>
-    <div id="loader" class="loader">
-        <img src="racecar.png" alt="Racecar Logo" class="loader-logo">
+<body id="body-container" class="">
+
+    <div class="outer-container flex items-center justify-center min-h-screen bg-gray-100 dark:bg-gray-900">
+        <div class="inner-container relative w-full max-w-md p-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+            <div class="content-container space-y-4">
+                <div class="content-row text-2xl font-bold text-center text-gray-800 dark:text-gray-100">Racecar.cc</div>
+                <div class="content-row h-6"></div>
+                <div class="content-row text-lg font-semibold text-center uppercase tracking-widest text-gray-600 dark:text-gray-300">
+                    <span>RACECAR</span> <span>FREAKY</span>
+                </div>
+                <div class="content-row h-6"></div>
+                <!-- Editable Links -->
+                <div class="content-row">
+                    <button id="link-1" class="content-link w-full flex items-center justify-between px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 transition">
+                        <span class="button-label">Telegram</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-2" class="content-link w-full flex items-center justify-between px-4 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-400 transition">
+                        <span class="button-label">Discord</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-3" class="content-link w-full flex items-center justify-between px-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300 transition">
+                        <span class="button-label">Twitter</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row">
+                    <button id="link-4" class="content-link w-full flex items-center justify-between px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-400 transition">
+                        <span class="button-label">YouTube</span>
+                        <span class="mobile-only">[↗]</span>
+                    </button>
+                </div>
+                <div class="content-row h-6"></div>
+                <!-- Email -->
+                <div class="content-row flex space-x-2">
+                    <button id="email-copy" class="no-mobile content-copy flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 transition">
+                        <span class="button-label">Email</span>
+                    </button>
+                    <button id="email-link" class="mobile-only content-copy flex-1 px-4 py-2 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded hover:bg-gray-300 dark:hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-400 transition">
+                        <span class="button-label">Email</span>
+                        <span class="mobile-only">[+]</span>
+                    </button>
+                </div>
+                <div class="content-row h-6"></div>
+                <!-- Theme Toggle -->
+                <div class="content-row content-row-bottom flex justify-center">
+                    <button id="theme-toggle" class="content-switch px-4 py-2 bg-yellow-400 text-gray-900 rounded hover:bg-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-300 transition">
+                        <span class="button-label no-mobile">Theme</span>
+                        <span class="mobile-only">[⬏]</span>
+                    </button>
+                </div>
+            </div>
+            <div id="ascii" class="ascii-container mt-8">
+                <pre data-selection-enabled="false"></pre>
+                <div id="ascii-hint" class="ascii-hint">[&nbsp;]</div>
+            </div>
+            <div id="ascii-click" class="ascii-click-container"></div>
+        </div>
     </div>
+    
+    <script type="module" src="main.js"></script>
 
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
-            <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="/">
-                    <img src="racecar.png" alt="Racecar Logo" style="height: 40px; margin-right: 10px;">
-                    <h1><span class="text-gradient">Racecar</span></h1>
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://outsmartac.paylix.gg/" target="_blank">Shop</a></li>
-                        <li class="nav-item"><a class="nav-link" href="/vouches.html">Vouches</a></li>
-                        <li class="nav-item"><a class="nav-link" href="https://discord.gg/MCFxn35aD3" target="_blank">Contact Us</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-    </header>
+    <script type="module">
+        import { run } from '/src/run.js'
+        import * as program from '/ascii.js'
+        run(program, { element: document.querySelector('pre') }).then(function (e) {
+            console.log(e)
+        }).catch(function (e) {
+            console.warn(e.message)
+            console.log(e.error)
+        })
+    </script>
 
-    <main>
-        <section class="hero" id="home">
-            <div class="container">
-                <div class="text-center">
-                    <h1 class="title">The <span class="text-gradient">Best</span> Upgrading Service Available</h1>
-                    <p class="paragraph">
-                        Our products are guaranteed to leave you satisfied in a way that others cannot compete with. We are committed and confident in our methods of getting you the best value.
-                    </p>
-                    <div class="buttons">
-                        <a class="btn btn-gradient btn-lg me-3 scale" href="https://outsmartac.paylix.gg/" target="_blank"><i class="fas fa-bag-shopping me-2"></i> Browse Shop</a>
-                        <a class="btn btn-custom btn-lg scale" href="/vouches.html"><i class="fas fa-comments me-2"></i> View Vouches</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="features" id="features">
-            <div class="container">
-                <div class="text-center features-title">
-                    <div class="pre-title">Features</div>
-                    <h2 class="title shimmer">The Greatest Benefits</h2>
-                </div>
-                <div class="row">
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <div class="feature-box active h-100">
-                            <div class="title"><i class="fas fa-lock"></i> Completely Legal</div>
-                            <div class="dsc"><p>We operate within the boundaries of the law, ensuring top-notch customer protection.</p></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <div class="feature-box h-100">
-                            <div class="title"><i class="fa fa-dollar-sign"></i> Extremely Affordable</div>
-                            <div class="dsc"><p>We value every customer and aim to provide affordable upgrades for everyone.</p></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <div class="feature-box h-100">
-                            <div class="title"><i class="fa fa-shield-alt"></i> No Revokes</div>
-                            <div class="dsc"><p>Our services are reliable and consistent. No subscription will be revoked.</p></div>
-                        </div>
-                    </div>
-                    <div class="col-12 col-md-6 col-lg-3 mb-4">
-                        <div class="feature-box h-100">
-                            <div class="title"><i class="fa fa-headset"></i> 24/7 Support</div>
-                            <div class="dsc"><p>We resolve any issue promptly by working around the clock.</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact" id="contact">
-            <div class="container">
-                <div class="contact-wrapper">
-                    <div class="contact-title">
-                        <h2 class="title shimmer">Let's Get Started</h2>
-                    </div>
-                    <div class="contact-buttons">
-                        <a href="https://discord.gg/MCFxn35aD3" target="_blank" class="btn btn-gradient btn-lg scale"><i class="fab fa-discord me-2"></i> Join our Discord</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script src="assets/js/loader.js"></script>
+    <script src="links.js"></script>
 </body>
+
 </html>
