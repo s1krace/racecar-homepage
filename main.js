@@ -1,10 +1,8 @@
 import { setupLinks } from './links.js';
-import { setupEmail } from './email.js';
 import { setupTheme } from './theme.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   setupLinks();
-  setupEmail();
   setupTheme();
 
   // Palindrome effect for title
