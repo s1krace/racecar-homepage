@@ -30,10 +30,10 @@
         .social-links a:hover { color: #00C1FF; }
         .vouch-card { background-color: #1e1e1e; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; height: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .vouch-card:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); }
-        .vouch-card.new-vouch { animation: fadeIn 0.5s ease-in-out; }
         footer.contact { background-color: #1e1e1e; padding: 3rem 0; border-top: 1px solid #333; text-align: center; }
         footer.contact .title { color: #fff; margin-bottom: 1.5rem; }
         .btn-gradient { background: linear-gradient(90deg, #00C1FF, #00A3FF); border: none; color: #fff; }
+        .new-vouch { animation: fadeIn 0.5s ease-in-out; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="/">
                     <h1><span class="text-gradient">Racecar</span> Vouches</h1>
@@ -56,13 +56,13 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact Us</a>
                             <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="https://discord.gg/MCFxn35aD3" target="_blank"><i class="fab fa-discord me-2"></i>Discord</a></li>
+								<li><a class="dropdown-item" href="https://discord.gg/MCFxn35aD3" target="_blank"><i class="fab fa-discord me-2"></i>Discord</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>  
+        </nav>	
     </header>
 
     <main class="container py-5">
@@ -159,7 +159,7 @@
             };
 
             fetchAndDisplayVouches();
-            setInterval(fetchAndDisplayVouches, 10000); // Check every 10 seconds for new vouches
+            setInterval(fetchAndDisplayVouches, 20000);
         });
     </script>
 </body>
