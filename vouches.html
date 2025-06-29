@@ -98,7 +98,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const vouchesRow = document.getElementById('vouchesRow');
             const counterSpan = document.getElementById('counterSpan');
-            const apiUrl = 'https://806991cc-8149-41fa-aeb0-a0a04e7c2dfd.repl.co/api/vouches';
+            const apiUrl = '/api/vouches'; // Use relative path to work with the host serving the page
             let displayedVouchIds = new Set();
 
             const fetchAndDisplayVouches = () => {
