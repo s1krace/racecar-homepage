@@ -177,7 +177,7 @@
                         }
 
                         const newCardElements = [];
-                        vouches.reverse().forEach(vouch => {
+                        vouches.forEach(vouch => {
                             const vouchId = vouch._id.$oid;
                             if (displayedVouchIds.has(vouchId)) return;
 
