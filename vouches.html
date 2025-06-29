@@ -52,6 +52,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" href="https://outsmartac.paylix.gg/" target="_blank">Shop</a></li>
                         <li class="nav-item"><a class="nav-link active" href="#">Vouches</a></li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Contact Us</a>
@@ -98,7 +99,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const vouchesRow = document.getElementById('vouchesRow');
             const counterSpan = document.getElementById('counterSpan');
-            const apiUrl = '/api/vouches'; // Use relative path to work with the host serving the page
+            const apiUrl = 'https://806991cc-8149-41fa-aeb0-a0a04e7c2dfd-00-3nia1nztou48q.riker.replit.dev/api/vouches';
             let displayedVouchIds = new Set();
 
             const fetchAndDisplayVouches = () => {
@@ -153,7 +154,7 @@
                     })
                     .catch(error => {
                         console.error('Failed to fetch vouches:', error);
-                        vouchesRow.innerHTML = '<p class="col-12 text-center text-danger">Could not load vouches.</p>';
+                        vouchesRow.innerHTML = '<p class="col-12 text-center text-danger">Could not load vouches. Please try reloading the page (F5). If the issue persists, please contact @racecar.cc on Discord.</p>';
                         counterSpan.textContent = 'Error';
                     });
             };
