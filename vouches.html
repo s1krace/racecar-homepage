@@ -28,16 +28,13 @@
         .vouches-title { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
         .social-links a { color: #aaa; margin-left: 1rem; font-size: 1.25rem; transition: color 0.2s ease; }
         .social-links a:hover { color: #00C1FF; }
-        .vouch-card { background-color: #1e1e1e; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; height: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.5s ease, background-color 0.5s ease; }
+        .vouch-card { background-color: #1e1e1e; border: 1px solid #333; border-radius: 8px; padding: 1.25rem; display: flex; flex-direction: column; height: 100%; transition: transform 0.2s ease, box-shadow 0.2s ease; }
         .vouch-card:hover { transform: translateY(-4px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); }
-        .vouch-card.new-vouch { animation: fadeIn 0.8s ease-in-out, highlight 2s ease-in-out; border-color: #00C1FF; background-color: #1a2a2e; }
+        .vouch-card.new-vouch { animation: fadeIn 0.5s ease-in-out; }
         footer.contact { background-color: #1e1e1e; padding: 3rem 0; border-top: 1px solid #333; text-align: center; }
         footer.contact .title { color: #fff; margin-bottom: 1.5rem; }
         .btn-gradient { background: linear-gradient(90deg, #00C1FF, #00A3FF); border: none; color: #fff; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes highlight { 0% { border-color: #00C1FF; background-color: #1a2a2e; } 50% { border-color: #00A3FF; background-color: #1a2a2e; } 100% { border-color: #00C1FF; background-color: #1e1e1e; } }
-        .refresh-button { transition: transform 0.3s ease, background 0.3s ease; }
-        .refresh-button:hover { transform: rotate(360deg); background: linear-gradient(90deg, #00A3FF, #00C1FF); }
     </style>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,7 +73,6 @@
             </div>
             <div class="info-right text-end">
                 <div class="stats fs-5 mb-2">Total Vouches: <span id="counterSpan">...</span></div>
-                <button id="refreshButton" class="btn btn-gradient refresh-button mb-2" style="padding: 0.25rem 0.75rem; font-size: 0.9rem;"><i class="fas fa-sync-alt"></i> Refresh Now</button>
                 <div class="social-links">
                     <a href="https://discord.gg/MCFxn35aD3" target="_blank" class="social-link" aria-label="Discord"><i class="fab fa-discord"></i></a>
                 </div>
@@ -102,13 +98,10 @@
         document.addEventListener('DOMContentLoaded', () => {
             const vouchesRow = document.getElementById('vouchesRow');
             const counterSpan = document.getElementById('counterSpan');
-            const refreshButton = document.getElementById('refreshButton');
             const apiUrl = 'https://806991cc-8149-41fa-aeb0-a0a04e7c2dfd.repl.co/api/vouches';
             let displayedVouchIds = new Set();
-            let lastVouchCount = 0;
-            let fullRefreshInterval;
 
-            const fetchAndDisplayVouches = (isManualRefresh = false) => {
+            const fetchAndDisplayVouches = () => {
                 fetch(apiUrl)
                     .then(response => response.json())
                     .then(vouches => {
@@ -118,146 +111,55 @@
                             return;
                         }
 
-                        // Check if there are new vouches
-                        const newVouches = vouches.filter(vouch => !displayedVouchIds.has(vouch._id.$oid));
-                        if (newVouches.length > 0 || isManualRefresh) {
-                            // Add new vouches to the top with animation
-                            newVouches.reverse().forEach(vouch => {
-                                const vouchId = vouch._id.$oid;
-                                if (displayedVouchIds.has(vouchId)) return;
+                        vouches.reverse().forEach(vouch => {
+                            const vouchId = vouch._id.$oid;
+                            if (displayedVouchIds.has(vouchId)) return;
 
-                                const cardWrapper = document.createElement('div');
-                                cardWrapper.className = 'col-lg-4 col-md-6 mb-4 new-vouch';
+                            const cardWrapper = document.createElement('div');
+                            cardWrapper.className = 'col-lg-4 col-md-6 mb-4 new-vouch';
 
-                                const timestamp = new Date(vouch.timestamp.$date);
-                                const dateTimeString = timestamp.toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '');
+                            const timestamp = new Date(vouch.timestamp.$date);
+                            const dateTimeString = timestamp.toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '');
 
-                                const imageLinkHtml = vouch.image_url ? `<div class="mt-3"><a href="${vouch.image_url}" target="_blank" rel="noopener noreferrer" class="text-warning fst-italic">View attached image</a></div>` : '';
+                            const imageLinkHtml = vouch.image_url ? `<div class="mt-3"><a href="${vouch.image_url}" target="_blank" rel="noopener noreferrer" class="text-warning fst-italic">View attached image</a></div>` : '';
 
-                                const vouchedForHtml = vouch.user_name
-                                    ? `<p class="mb-2" style="color: #ccc;">For: <span class="fw-bold">${vouch.user_name}</span></p>`
-                                    : '';
+                            const vouchedForHtml = vouch.user_name
+                                ? `<p class="mb-2" style="color: #ccc;">For: <span class="fw-bold">${vouch.user_name}</span></p>`
+                                : '';
 
-                                cardWrapper.innerHTML = `
-                                    <div class="vouch-card">
-                                        <div class="card-body d-flex flex-column">
-                                            <div class="flex-grow-1">
-                                                <h5 class="card-title fw-bold" style="color: #00C1FF;">${vouch.vouched_by_name} <span style="color: #aaa; font-weight: normal; font-size: 0.8rem;">(${vouch.vouched_by_id})</span></h5>
-                                                ${vouchedForHtml}
-                                                <p class="card-text my-3" style="color: #f5f5f5; font-size: 1rem;">${vouch.vouch_text}</p>
-                                            </div>
-                                            <div class="mt-auto">
-                                                ${imageLinkHtml}
-                                                <div class="d-flex justify-content-between align-items-center small mt-3 pt-3 border-top border-secondary-subtle" style="color: #aaa;">
-                                                    <span class="font-monospace">ID: ${vouch._id.$oid}</span>
-                                                    <span>${dateTimeString}</span>
-                                                </div>
+                            cardWrapper.innerHTML = `
+                                <div class="vouch-card">
+                                    <div class="card-body d-flex flex-column">
+                                        <div class="flex-grow-1">
+                                            <h5 class="card-title fw-bold" style="color: #00C1FF;">${vouch.vouched_by_name} <span style="color: #aaa; font-weight: normal; font-size: 0.8rem;">(${vouch.vouched_by_id})</span></h5>
+                                            ${vouchedForHtml}
+                                            <p class="card-text my-3" style="color: #f5f5f5; font-size: 1rem;">${vouch.vouch_text}</p>
+                                        </div>
+                                        <div class="mt-auto">
+                                            ${imageLinkHtml}
+                                            <div class="d-flex justify-content-between align-items-center small mt-3 pt-3 border-top border-secondary-subtle" style="color: #aaa;">
+                                                <span class="font-monospace">ID: ${vouch._id.$oid}</span>
+                                                <span>${dateTimeString}</span>
                                             </div>
                                         </div>
                                     </div>
-                                `;
-                                vouchesRow.prepend(cardWrapper);
-                                displayedVouchIds.add(vouchId);
-                            });
+                                </div>
+                            `;
+                            vouchesRow.prepend(cardWrapper);
+                            displayedVouchIds.add(vouchId);
+                        });
 
-                            // Update counter
-                            counterSpan.textContent = displayedVouchIds.size;
-
-                            // If significant change in vouch count, do a full refresh to clean up UI
-                            if (Math.abs(vouches.length - lastVouchCount) > 5 || isManualRefresh) {
-                                setTimeout(() => {
-                                    fullRefreshVouches(vouches);
-                                }, 5000); // Wait 5 seconds after new vouches to do full refresh
-                            }
-                            lastVouchCount = vouches.length;
-                        }
+                        counterSpan.textContent = displayedVouchIds.size;
                     })
                     .catch(error => {
                         console.error('Failed to fetch vouches:', error);
-                        if (displayedVouchIds.size === 0) {
-                            vouchesRow.innerHTML = '<p class="col-12 text-center text-danger">Could not load vouches.</p>';
-                        }
+                        vouchesRow.innerHTML = '<p class="col-12 text-center text-danger">Could not load vouches.</p>';
                         counterSpan.textContent = 'Error';
                     });
             };
 
-            const fullRefreshVouches = (vouches) => {
-                console.log("Performing full UI refresh for vouches");
-                vouchesRow.innerHTML = ''; // Clear current vouches
-                displayedVouchIds.clear(); // Reset the set of displayed IDs
-                vouches.reverse().forEach(vouch => {
-                    const vouchId = vouch._id.$oid;
-                    const cardWrapper = document.createElement('div');
-                    cardWrapper.className = 'col-lg-4 col-md-6 mb-4';
-
-                    const timestamp = new Date(vouch.timestamp.$date);
-                    const dateTimeString = timestamp.toLocaleString('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit' }).replace(',', '');
-
-                    const imageLinkHtml = vouch.image_url ? `<div class="mt-3"><a href="${vouch.image_url}" target="_blank" rel="noopener noreferrer" class="text-warning fst-italic">View attached image</a></div>` : '';
-
-                    const vouchedForHtml = vouch.user_name
-                        ? `<p class="mb-2" style="color: #ccc;">For: <span class="fw-bold">${vouch.user_name}</span></p>`
-                        : '';
-
-                    cardWrapper.innerHTML = `
-                        <div class="vouch-card">
-                            <div class="card-body d-flex flex-column">
-                                <div class="flex-grow-1">
-                                    <h5 class="card-title fw-bold" style="color: #00C1FF;">${vouch.vouched_by_name} <span style="color: #aaa; font-weight: normal; font-size: 0.8rem;">(${vouch.vouched_by_id})</span></h5>
-                                    ${vouchedForHtml}
-                                    <p class="card-text my-3" style="color: #f5f5f5; font-size: 1rem;">${vouch.vouch_text}</p>
-                                </div>
-                                <div class="mt-auto">
-                                    ${imageLinkHtml}
-                                    <div class="d-flex justify-content-between align-items-center small mt-3 pt-3 border-top border-secondary-subtle" style="color: #aaa;">
-                                        <span class="font-monospace">ID: ${vouch._id.$oid}</span>
-                                        <span>${dateTimeString}</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    vouchesRow.appendChild(cardWrapper);
-                    displayedVouchIds.add(vouchId);
-                });
-                counterSpan.textContent = displayedVouchIds.size;
-                lastVouchCount = displayedVouchIds.size;
-            };
-
-            // Initial fetch
             fetchAndDisplayVouches();
-
-            // Set up polling for new vouches every 5 seconds (more frequent for responsiveness)
-            setInterval(() => {
-                fetchAndDisplayVouches(false);
-            }, 5000);
-
-            // Set up full UI refresh every 30 minutes to clean up any UI glitches
-            fullRefreshInterval = setInterval(() => {
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(vouches => {
-                        fullRefreshVouches(vouches);
-                    });
-            }, 30 * 60 * 1000); // 30 minutes
-
-            // Manual refresh on button click
-            refreshButton.addEventListener('click', () => {
-                refreshButton.disabled = true;
-                refreshButton.innerHTML = '<i class="fas fa-sync-alt fa-spin"></i> Refreshing...';
-                fetch(apiUrl)
-                    .then(response => response.json())
-                    .then(vouches => {
-                        fullRefreshVouches(vouches);
-                        refreshButton.disabled = false;
-                        refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Now';
-                    })
-                    .catch(error => {
-                        console.error('Manual refresh failed:', error);
-                        refreshButton.disabled = false;
-                        refreshButton.innerHTML = '<i class="fas fa-sync-alt"></i> Refresh Now';
-                    });
-            });
+            setInterval(fetchAndDisplayVouches, 10000); // Check every 10 seconds for new vouches
         });
     </script>
 </body>
