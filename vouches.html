@@ -150,7 +150,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const vouchesRow = document.getElementById('vouchesRow');
             const counterSpan = document.getElementById('counterSpan');
-            const apiUrl = 'https://discobot-3del.onrender.com/api/vouches';
+            const apiUrl = 'https://806991cc-8149-41fa-aeb0-a0a04e7c2dfd-00-3nia1nztou48q.riker.replit.dev/api/vouches';
             let displayedVouchIds = new Set();
             let msnry;
 
@@ -168,7 +168,12 @@
 
             const fetchAndDisplayVouches = () => {
                 fetch(apiUrl)
-                    .then(response => response.json())
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
+                        }
+                        return response.json();
+                    })
                     .then(vouches => {
                         if (vouches.length === 0 && displayedVouchIds.size === 0) {
                             vouchesRow.innerHTML = '<p class="col-12 text-center text-muted">No vouches have been recorded yet.</p>';
